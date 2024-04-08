@@ -2,6 +2,7 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 from vega_datasets import data
+import os
 
 st.set_page_config(
     page_title="Time series annotations", page_icon="⬇", layout="centered"
@@ -156,3 +157,8 @@ st.altair_chart((chart + annotation_layer).interactive(), use_container_width=Tr
 """,
     "python",
 )
+
+# write environment variable TEST_NAME if it is set else write "TEST_NAME not set"
+st.write(f"## Environment variables")
+st.write(f"TEST_NAME: {os.getenv('TEST_NAME', 'TEST_NAME not set')}")
+
